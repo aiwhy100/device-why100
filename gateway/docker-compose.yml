@@ -1,0 +1,29 @@
+# 个人开发者：  cp .env.example .env（填 Key）→ docker compose up -d
+# 合作厂商：    .env 里 UPSTREAM=partner、ASR_URL=http://asr:8090/asr → docker compose --profile asr up -d
+#               （asr-server 第一次启动会下载约 230 MB 识别模型）
+services:
+  gateway:
+    build: .
+    image: aiwhy100-gateway
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "8080:8080"
+    volumes:
+      - data:/data
+
+  asr:
+    profiles: ["asr"]
+    build: https://github.com/aiwhy100/asr-server.git
+    image: asr-server
+    restart: unless-stopped
+    environment:
+      ASR_TOKENS: ${ASR_TOKEN:-}
+      ASR_MODEL_URL: ${ASR_MODEL_URL:-}
+    volumes:
+      - models:/models
+    mem_limit: 1500m
+
+volumes:
+  data:
+  models:

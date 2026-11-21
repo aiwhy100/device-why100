@@ -1,0 +1,11 @@
+{
+  "name": "aiwhy100-gateway",
+  "version": "1.0.0",
+  "description": "AI为什么100 设备网关：设备只和网关通信，API Key 留在服务端；带家长手机网页",
+  "license": "Apache-2.0",
+  "type": "module",
+  "private": true,
+  "main": "src/server.js",
+  "scripts": { "start": "node src/server.js" },
+  "engines": { "node": ">=20" }
+}

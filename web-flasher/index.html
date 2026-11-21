@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI为什么100 刷机</title>
+<script type="module" src="https://unpkg.com/esp-web-tools@10.1.0/dist/web/install-button.js?module"></script>
+<style>
+  :root { --bg:#fff8ef; --card:#fff; --ink:#2b2118; --sub:#8a7a6a; --accent:#ff8a3d; --line:#eadccb; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#1c1712; --card:#29221b; --ink:#f6ece2; --sub:#b3a291; --line:#3a3027; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.6 -apple-system, "PingFang SC", "Noto Sans SC", sans-serif; }
+  main { max-width: 600px; margin: 0 auto; padding: 32px 16px 48px; }
+  h1 { font-size: 24px; margin: 0 0 4px; }
+  .sub { color: var(--sub); margin: 0 0 24px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+  ol { padding-left: 20px; margin: 0; }
+  li { margin: 6px 0; }
+  esp-web-install-button button[slot="activate"] { padding: 14px 28px; border: 0; border-radius: 999px; background: var(--accent); color: #fff; font-size: 17px; cursor: pointer; }
+  .muted { color: var(--sub); font-size: 14px; }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <h1>AI为什么100 · 网页刷机</h1>
+  <p class="sub">给微雪 ESP32-S3-AUDIO-Board 刷上「AI为什么100」固件，不用装任何软件。</p>
+
+  <div class="card">
+    <ol>
+      <li>用电脑上的 <b>Chrome 或 Edge</b> 打开这一页（手机和 Safari 不行）。</li>
+      <li>用 USB-C 数据线把板子连到电脑。</li>
+      <li>点下面的按钮，选择出现的串口，等进度条走完（约 1 分钟）。</li>
+    </ol>
+    <p style="margin-top:18px">
+      <esp-web-install-button manifest="manifest.json">
+        <button slot="activate">连接板子并刷机</button>
+        <span slot="unsupported">这个浏览器不支持网页刷机，请换成电脑上的 Chrome 或 Edge。</span>
+        <span slot="not-allowed">需要用 https 打开这一页。</span>
+      </esp-web-install-button>
+    </p>
+    <p class="muted">找不到串口：按住板子上的 BOOT 键，再按一下 RESET，松开 BOOT 后重试。</p>
+  </div>
+
+  <div class="card">
+    <b>刷完之后</b>
+    <ol>
+      <li>板子会说「请爸爸妈妈打开手机的无线网设置……」，灯环青色呼吸。</li>
+      <li>手机连上 <b>AI为什么100-xxxx</b> 热点，会自动弹出设置页（没弹出就打开 192.168.4.1）。</li>
+      <li>填 WiFi（2.4G）和 API Key（在 <a href="https://aiwhy100.com/app/" target="_blank" rel="noopener">aiwhy100.com/app</a>「设置 → API Key」创建），保存。</li>
+      <li>板子说「我准备好啦」，按住任意按键问一个「为什么」吧！</li>
+    </ol>
+  </div>
+
+  <p class="muted">源码和说明：<a href="https://github.com/aiwhy100/device-why100">github.com/aiwhy100/device-why100</a> · Apache-2.0</p>
+</main>
+</body>
+</html>

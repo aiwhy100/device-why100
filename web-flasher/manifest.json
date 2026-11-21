@@ -1,0 +1,11 @@
+{
+  "name": "AI为什么100 · 微雪 ESP32-S3-AUDIO-Board",
+  "version": "__VERSION__",
+  "new_install_prompt_erase": true,
+  "builds": [
+    {
+      "chipFamily": "ESP32-S3",
+      "parts": [{ "path": "why100-esp32s3-audio-board.bin", "offset": 0 }]
+    }
+  ]
+}

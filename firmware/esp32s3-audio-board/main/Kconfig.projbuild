@@ -1,0 +1,38 @@
+menu "AI为什么100"
+
+    comment "Defaults only. Settings saved from the phone setup page (portal) take precedence."
+
+    config WHY_WIFI_SSID
+        string "WiFi SSID (2.4 GHz)"
+        default ""
+
+    config WHY_WIFI_PASS
+        string "WiFi password"
+        default ""
+
+    choice WHY_MODE
+        prompt "Connection mode"
+        default WHY_MODE_DIRECT
+        help
+            Direct: the device calls api.aiwhy100.com with a personal API key.
+            Gateway: the device talks to your own gateway (device-why100/gateway), which holds the key.
+
+        config WHY_MODE_DIRECT
+            bool "Direct to AI为什么100 (personal API key)"
+        config WHY_MODE_GATEWAY
+            bool "Self-hosted gateway"
+    endchoice
+
+    config WHY_API_KEY
+        string "API key (direct mode, svf_live_...)"
+        default ""
+
+    config WHY_SERVER_URL
+        string "Server URL (direct: empty = https://api.aiwhy100.com; gateway: http://<IP>:8080)"
+        default ""
+
+    config WHY_DEVICE_TOKEN
+        string "Device token (gateway mode, optional)"
+        default ""
+
+endmenu

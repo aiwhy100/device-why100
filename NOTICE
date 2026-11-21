@@ -1,0 +1,12 @@
+device-why100
+Copyright 2026 AI为什么100 (https://aiwhy100.com)
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+voice/out/*.wav are the device prompts of the AI为什么100 mascot "小奇" (Xiaoqi). They were
+synthesized with the Microsoft neural voice zh-CN-YunxiaNeural through the open-source
+edge-tts tool (voice/gen-voice.mjs). If you build a commercial product, consider
+re-generating the prompts with a TTS service whose terms cover your use, or recording your own.
+
+Third-party components used by the firmware (fetched by the ESP-IDF component manager, not bundled):
+- ESP-IDF, esp_codec_dev, esp_io_expander_tca95xx_16bit, led_strip (Espressif Systems), Apache License 2.0.

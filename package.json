@@ -1,0 +1,19 @@
+{
+  "name": "device-why100",
+  "version": "1.0.0",
+  "private": true,
+  "description": "把孩子的「为什么」变成科普动画：AI为什么100 硬件接入（ESP32 固件、示例、自建网关、模拟服务器、小智 AI 接入）",
+  "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "mock": "node mock/server.mjs",
+    "gateway": "node gateway/src/server.js",
+    "xiaozhi": "node integrations/xiaozhi/bridge.mjs",
+    "voice": "node voice/gen-voice.mjs",
+    "test": "node --test test/gateway.test.mjs test/xiaozhi.test.mjs test/examples.test.mjs"
+  },
+  "devDependencies": {
+    "ws": "^8.18.0"
+  },
+  "engines": { "node": ">=20" }
+}

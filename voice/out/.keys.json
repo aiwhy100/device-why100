@@ -1,0 +1,16 @@
+{
+  "boot": "f8847b8b8838",
+  "got": "be997b336bf5",
+  "not_heard": "be16b188d1dc",
+  "rejected": "7a0e494e608f",
+  "net_error": "3e7bf000438e",
+  "no_wifi": "60b9a07e6ec8",
+  "ready": "1c84ea981f28",
+  "found": "8074863ef98d",
+  "busy": "5ae6652cc92f",
+  "no_credit": "88632d379df7",
+  "bad_key": "200628413efe",
+  "failed": "c013b82400af",
+  "setup": "19b37cf41c5b",
+  "saved": "cce5b4d1c63c"
+}
