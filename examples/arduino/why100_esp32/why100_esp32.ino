@@ -1,5 +1,5 @@
 /*
-  AI为什么100 · Arduino 示例（ESP32-S3 / ESP32，arduino-esp32 3.x）
+  AI为什么100 · Arduino 示例（ESP32-S3 / ESP32，arduino-esp32 4.x）
 
   最少只要一块 ESP32 开发板：在「串口监视器」里打一个「为什么」问题，几分钟后串口打印视频链接。
   再接一个 INMP441 麦克风（约 10 元），就能按住 BOOT 键说话提问。
@@ -14,6 +14,9 @@
     3. 打开串口监视器（115200，换行符选「换行」），输入「为什么天空是蓝色的？」回车；
        或者按住 BOOT 键说话，松开提交
     4. 做好后串口打印播放链接；手机打开 https://aiwhy100.com/app/ 登录同一个账号也能看
+
+  开发板选「ESP32S3 Dev Module」（有 PSRAM 的板子在「工具 → PSRAM」选 OPI / QSPI，可以录 8 秒）。
+  程序约占默认分区的 90%，要往里加功能就在「工具 → Partition Scheme」选「Huge APP」。
 
   本地联调不花额度：电脑上运行 node mock/server.mjs，把 API_BASE 改成 http://<电脑 IP>:8787
 
@@ -66,8 +69,8 @@ int api(const char *method, const String &path, const uint8_t *body, size_t len,
   HTTPClient http;
   bool https = url.startsWith("https://");
   if (https) {
-    // 用芯片里自带的根证书包校验服务器证书（不要用 setInsecure()，否则 Key 可能被中间人截获）
-    tls.setCACertBundle(rootca_crt_bundle_start, rootca_crt_bundle_end - rootca_crt_bundle_start);
+    // 用核心自带的 Mozilla 根证书包校验服务器证书（不要用 setInsecure()，否则 Key 可能被中间人截获）
+    tls.useBuiltinCACertBundle();
   }
   if (!(https ? http.begin(tls, url) : http.begin(plain, url))) return -1;
   http.setTimeout(20000);
