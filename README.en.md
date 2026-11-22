@@ -63,7 +63,7 @@ Sample videos: [aiwhy100.com/videos](https://aiwhy100.com/videos/)
 
 1. **Flash**: download `why100-esp32s3-audio-board.bin` from [Releases](https://github.com/aiwhy100/device-why100/releases), then
    `pip install esptool && esptool.py --chip esp32s3 write_flash 0x0 why100-esp32s3-audio-board.bin`.
-   Or open the [web flasher](https://aiwhy100.github.io/device-why100/) in desktop Chrome / Edge and flash with one click.
+   Or open the [web flasher at aiwhy100.com/flash](https://aiwhy100.com/flash) in desktop Chrome / Edge and flash with one click (mirror: [GitHub Pages](https://aiwhy100.github.io/device-why100/)).
    To build it yourself, see [docs/firmware.md](docs/firmware.md).
 2. **Set up Wi-Fi**: on first boot the board asks (in Chinese) for a parent to join its hotspot, and the LED ring breathes cyan. Join `AI为什么100-xxxx` with your phone; the board confirms out loud and a setup page pops up (or open `http://192.168.4.1`). Tap your 2.4 GHz network, enter the password and API key, then tap the button at the bottom. The board tries the settings on the spot and speaks the result (success, wrong Wi-Fi password, or bad key); the page shows progress too. Nothing is saved unless it works.
 3. **Ask**: hold any button, speak, release. When the video is ready the board says so and the ring turns rainbow.

@@ -13,7 +13,7 @@ pip install esptool
 esptool.py --chip esp32s3 write_flash 0x0 why100-esp32s3-audio-board.bin
 ```
 
-也可以用电脑上的 Chrome / Edge 打开[网页刷机页](https://aiwhy100.github.io/device-why100/)，不用装 esptool。
+也可以用电脑上的 Chrome / Edge 打开[网页刷机页 aiwhy100.com/flash](https://aiwhy100.com/flash)，不用装 esptool（备用：[GitHub Pages](https://aiwhy100.github.io/device-why100/)）。官网刷机页总是用最新 Release 的固件。
 
 找不到串口时：按住板子上的 BOOT 键，再按一下 RESET，松开 BOOT，进入下载模式后重试。刷完按一下 RESET。
 

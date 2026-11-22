@@ -74,7 +74,7 @@ python3 examples/python/why.py --loop                      # 树莓派 + USB 麦
    esptool.py --chip esp32s3 write_flash 0x0 why100-esp32s3-audio-board.bin
    ```
 
-   或者用电脑上的 Chrome / Edge 打开[网页刷机页](https://aiwhy100.github.io/device-why100/)，点一下就能刷，什么都不用装。
+   或者用电脑上的 Chrome / Edge 打开[网页刷机页 aiwhy100.com/flash](https://aiwhy100.com/flash)，点一下就能刷，什么都不用装（备用地址：[GitHub Pages](https://aiwhy100.github.io/device-why100/)）。
    想自己编译：见 [docs/firmware.md](docs/firmware.md)。
 2. **配网**：第一次开机，板子会说「请爸爸妈妈打开手机的无线网设置……」，灯环青色呼吸。手机连上 `AI为什么100-xxxx` 热点，板子说「手机连上我啦」，同时弹出设置页（没弹出就打开 `http://192.168.4.1`）。点选 WiFi（2.4G）、填密码和 API Key，点「保存并连接」。板子当场试一次，用声音报结果：「设置好啦」就成功了；「连不上这个无线网」请检查密码。每一步都有语音，详见 [docs/firmware.md](docs/firmware.md#第一次使用手机配网)。
 3. **提问**：板子说「我准备好啦」后，按住任意按键说话，松开。做好后板子会说「你问的视频做好啦」，灯环变彩虹。
