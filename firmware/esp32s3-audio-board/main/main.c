@@ -55,11 +55,12 @@ static const char *TAG = "why";
                     extern const uint8_t name##_wav_end[] asm("_binary_" #name "_wav_end");
 VOICE(boot) VOICE(got) VOICE(found) VOICE(not_heard) VOICE(rejected) VOICE(busy) VOICE(no_credit)
 VOICE(bad_key) VOICE(net_error) VOICE(no_wifi) VOICE(ready) VOICE(failed) VOICE(setup) VOICE(saved)
+VOICE(connecting) VOICE(wifi_bad) VOICE(phone_in)
 #define V(name) {#name, name##_wav_start, name##_wav_end}
 typedef struct { const char *id; const uint8_t *start, *end; } voice_t;
 static const voice_t VOICES[] = {
   V(boot), V(got), V(found), V(not_heard), V(rejected), V(busy), V(no_credit),
-  V(bad_key), V(net_error), V(no_wifi), V(ready), V(failed), V(setup), V(saved),
+  V(bad_key), V(net_error), V(no_wifi), V(ready), V(failed), V(setup), V(saved), V(connecting), V(wifi_bad), V(phone_in),
 };
 
 // ---------- 状态 ----------
@@ -262,7 +263,7 @@ static size_t record(int16_t *buf, size_t max_samples) {
 
 // ================= WiFi =================
 static void wifi_event(void *arg, esp_event_base_t base, int32_t id, void *data) {
-  if (g_state == ST_SETUP) return;  // 配网时 STA 只用来扫描
+  if (g_portal) return;  // 配网时 STA 由 portal.c 自己管
   if (base == WIFI_EVENT && (id == WIFI_EVENT_STA_START || id == WIFI_EVENT_STA_DISCONNECTED)) {
     xEventGroupClearBits(s_wifi_ev, WIFI_UP);
     esp_wifi_connect();

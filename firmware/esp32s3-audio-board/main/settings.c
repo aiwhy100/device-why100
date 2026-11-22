@@ -46,7 +46,8 @@ esp_err_t settings_save(const settings_t *s) {
   return e;
 }
 
-bool settings_direct(void) { return strcmp(g_cfg.mode, "gateway") != 0; }
+bool settings_direct_mode(const settings_t *s) { return strcmp(s->mode, "gateway") != 0; }
+bool settings_direct(void) { return settings_direct_mode(&g_cfg); }
 
 const char *settings_server(void) {
   if (g_cfg.server[0]) return g_cfg.server;

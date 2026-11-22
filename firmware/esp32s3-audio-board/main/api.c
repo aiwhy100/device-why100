@@ -279,3 +279,12 @@ const char *api_ask(const int16_t *pcm, size_t samples) {
 const char *api_check(void) {
   return settings_direct() ? direct_check() : gateway_check();
 }
+
+int api_verify(const char *device_id) {
+  char resp[512], url[256];
+  if (settings_direct()) snprintf(url, sizeof url, "%s/api/app/v1/me", settings_server());
+  else snprintf(url, sizeof url, "%s/api/device/%s/poll", settings_server(), device_id);
+  int st = http("GET", url, NULL, NULL, 0, resp, sizeof resp);
+  ESP_LOGI(TAG, "检查设置 %s → %d", url, st);
+  return st;
+}

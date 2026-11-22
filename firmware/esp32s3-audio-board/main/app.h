@@ -23,12 +23,15 @@ esp_err_t settings_save(const settings_t *s);
 /** WiFi 和接入方式都填好了 */
 bool settings_ready(void);
 bool settings_direct(void);
+bool settings_direct_mode(const settings_t *s);
 /** 去掉末尾斜杠的接口地址 */
 const char *settings_server(void);
 
 // ================= 配网（portal.c） =================
 /** 开热点「AI为什么100-xxxx」+ 设置网页，保存后重启；15 分钟没保存也重启。不返回 */
 void portal_run(void) __attribute__((noreturn));
+/** 正在配网（main.c 的 WiFi 事件处理据此不自动重连） */
+extern volatile bool g_portal;
 
 // ================= 接口（api.c） =================
 void api_init(const char *device_id);
@@ -38,6 +41,8 @@ const char *api_ask(const int16_t *pcm, size_t samples);
 const char *api_check(void);
 /** 还有几个视频在做 */
 int api_pending(void);
+/** 用当前设置试一下能不能用：直连 GET /me，网关 GET /poll。返回 HTTP 状态码，网络失败 < 0 */
+int api_verify(const char *device_id);
 
 // ================= 状态灯 / 提示语（main.c） =================
 typedef enum { ST_BOOT, ST_IDLE, ST_LISTEN, ST_THINK, ST_SPEAK, ST_READY, ST_OFFLINE, ST_SETUP } state_t;

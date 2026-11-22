@@ -1,6 +1,6 @@
 # 预置提示语（voice/out/*.wav，16kHz 单声道）直接打包进固件
 set(VOICE_DIR ${CMAKE_CURRENT_LIST_DIR}/../../../voice/out)
-set(VOICES boot got found not_heard rejected busy no_credit bad_key net_error no_wifi ready failed setup saved)
+set(VOICES boot got found not_heard rejected busy no_credit bad_key net_error no_wifi ready failed setup saved connecting wifi_bad phone_in)
 set(VOICE_FILES)
 foreach(v ${VOICES})
   list(APPEND VOICE_FILES ${VOICE_DIR}/${v}.wav)
