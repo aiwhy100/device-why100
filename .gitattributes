@@ -1,0 +1,6 @@
+# 语言统计只算产品代码（固件、网关、示例），测试 / 模拟服务器 / 工具脚本不算
+test/** linguist-detectable=false
+mock/** linguist-detectable=false
+voice/*.mjs linguist-detectable=false
+web-flasher/** linguist-detectable=false
+*.wav binary
